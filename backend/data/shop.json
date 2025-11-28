@@ -1,0 +1,20 @@
+[
+  {
+    "name": "TVS Service Center",
+    "lat": 10.8760,
+    "long": 78.6920,
+    "parts": ["brake pad", "oil filter", "clutch cable"]
+  },
+  {
+    "name": "Honda Spare Hub",
+    "lat": 10.8715,
+    "long": 78.6842,
+    "parts": ["air filter", "indicator", "mirror"]
+  },
+  {
+    "name": "Royal Enfield Store",
+    "lat": 10.8802,
+    "long": 78.7005,
+    "parts": ["brake pad", "silencer", "seat cover"]
+  }
+]
