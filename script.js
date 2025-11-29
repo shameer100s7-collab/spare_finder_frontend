@@ -74,4 +74,5 @@ async function searchPart() {
     document.getElementById("output").innerText = "Error contacting server.";
     console.log(e);
 }
+}
 
