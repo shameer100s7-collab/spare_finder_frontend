@@ -30,7 +30,7 @@ async function searchPart() {
     }
 
     // Your Render backend URL
-    const apiUrl = `https://spare-finder-bot.onrender.com/api/search?lat=${userLat}&long=${userLong}&item=${part}`;
+    const apiUrl = `https://spare-finder-backend.onrender.com/nearby?lat=${userLat}&long=${userLong}&part=${part}`;
 
     document.getElementById("output").innerText = "Searching...";
 
