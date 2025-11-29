@@ -28,6 +28,19 @@ This application uses GPS coordinates to identify nearby shops and displays dist
 
 ## 🌐 Live Demo
 ## 📸 Screenshots
+---
+
+## 🖼 Additional Screenshots
+
+### 🧠 Backend API Response
+Shows working API returning shop results in JSON format.
+![Backend API Response](https://raw.githubusercontent.com/shameer100s7-collab/spare_finder_frontend/main/api_screenshot.png)
+
+### 🚀 Render Deployment Dashboard
+Backend hosted on Render and running live.
+![Render Dashboard](https://raw.githubusercontent.com/shameer100s7-collab/spare_finder_frontend/main/render_dashboard.png)
+
+---
 
 ### 🔍 Search Result Page
 ![Search Results](https://raw.githubusercontent.com/shameer100s7-collab/spare_finder_frontend/main/screenshot.png)
