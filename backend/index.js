@@ -57,41 +57,40 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 // API Endpoint → Search Spare Parts
 // ------------------------------
 app.get("/api/search", (req, res) => {
-    const item = req.query.item?.toLowerCase();
-    const userLat = parseFloat(req.query.lat);
-    const userLong = parseFloat(req.query.long);
+  const item = req.query.item?.toLowerCase();
+  const userLat = parseFloat(req.query.lat);
+  const userLong = parseFloat(req.query.long);
 
-    if (!item || !userLat || !userLong) {
-        return res.status(400).json({
-            error: "Missing required fields: item, lat, long"
-        });
-    }
-
-    const results = SHOPS
-  .filter(shop =>
-    shop.parts.some(part =>
-      part.toLowerCase().includes(item) || item.includes(part.toLowerCase().split(" ")[0])
-    )
-  )
-  .map(shop => {
-    const distance = calculateDistance(userLat, userLong, shop.lat, shop.long).toFixed(2);
-
-    return {
-      name: shop.name,
-      partsAvailable: shop.parts,
-      distanceKm: distance,
-      googleMapLink: `https://www.google.com/maps?q=${shop.lat},${shop.long}`
-    };
-  });
-
-
-    res.json({
-        query: item,
-        count: results.length,
-        shops: results
+  if (!item || !userLat || !userLong) {
+    return res.status(400).json({
+      error: "Missing required fields: item, lat, long"
     });
-});
+  }
 
+  const results = SHOPS
+    .filter(shop =>
+      shop.parts.some(part =>
+        part.toLowerCase().includes(item) ||
+        item.includes(part.toLowerCase().split(" ")[0])
+      )
+    )
+    .map(shop => {
+      const distance = calculateDistance(userLat, userLong, shop.lat, shop.long).toFixed(2);
+
+      return {
+        name: shop.name,
+        partsAvailable: shop.parts,
+        distanceKm: distance,
+        googleMapLink: `https://www.google.com/maps?q=${shop.lat},${shop.long}`
+      };
+    });
+
+  res.json({
+    query: item,
+    count: results.length,
+    shops: results
+  });
+});
 
 // ------------------------------
 // Start Backend Server
@@ -99,6 +98,7 @@ app.get("/api/search", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log("Server running on port " + PORT);
+  console.log("Server running on port " + PORT);
 });
+
 
