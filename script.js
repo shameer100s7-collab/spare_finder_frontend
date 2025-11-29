@@ -73,6 +73,6 @@ async function searchPart() {
 } catch (e) {
     document.getElementById("output").innerText = "Error contacting server.";
     console.log(e);
-}
+   }
 }
 
