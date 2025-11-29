@@ -44,7 +44,7 @@ async function searchPart() {
         }
 
         // format results
-        let html = `<h3>Results (${data.count} shops)</h3>`;
+        let html = `<h3>Results (${data.shops.length} shops)</h3>`;
         data.shops.forEach((shop, i) => {
             html += `
                 <p>
