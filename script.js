@@ -64,7 +64,6 @@ async function searchPart() {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return (R * c).toFixed(2);
 }
-
         // format results
         let html = `<h3>Results (${data.shops.length} shops)</h3>`;
         data.shops.forEach((shop, i) => {
