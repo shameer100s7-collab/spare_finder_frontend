@@ -67,25 +67,16 @@ async function searchPart() {
         // format results
         let html = `<h3>Results (${data.shops.length} shops)</h3>`;
         data.shops.forEach((shop, i) => {
-           html += `
-  <p>
-    <b>${i + 1}. ${shop.name}</b><br>
-    Distance: ${dist} km<br>
-    <a href="https://www.google.com/maps/search/?api=1&query=${shop.lat},${shop.long}" target="_blank">📍 Open in Maps</a>
-  </p>
-`;
+  const dist = calculateDistance(userLat, userLong, shop.lat, shop.long);
 
-    <b>${i + 1}. ${shop.name}</b><br>
-    Distance: ${dist} km<br>
-    <a href="https://www.google.com/maps/search/?api=1&query=${shop.lat},${shop.long}" target="_blank">📍 Open in Maps</a>
-  </p>
-`;
-
-                <a href="${shop.googleMapLink}" target="_blank">📍 Open in Maps</a>
-                </p>
-            `;
-        });
-
+  html += `
+    <p>
+      <b>${i + 1}. ${shop.name}</b><br>
+      Distance: ${dist} km<br>
+      <a href="https://www.google.com/maps/search/?api=1&query=${shop.lat},${shop.long}" target="_blank">📍 Open in Maps</a>
+    </p>
+  `;
+});
         document.getElementById("output").innerHTML = html;
 
     } catch (e) {
