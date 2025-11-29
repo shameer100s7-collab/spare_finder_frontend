@@ -27,6 +27,11 @@ This application uses GPS coordinates to identify nearby shops and displays dist
 ---
 
 ## 🌐 Live Demo
+## 📸 Screenshots
+
+### 🔍 Search Result Page
+![Search Results](https://raw.githubusercontent.com/shameer100s7-collab/spare_finder_frontend/main/screenshot.png)
+
 ### Frontend URL:
 https://shameer100s7-collab.github.io/spare_finder_frontend/
 
