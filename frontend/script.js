@@ -6,14 +6,59 @@ function getLocation() {
     }
 }
 
+let userLat = null;
+let userLong = null;
+
 function showPosition(position) {
-    document.getElementById("output").innerText = 
-    "Latitude: " + position.coords.latitude + 
-    ", Longitude: " + position.coords.longitude;
+    userLat = position.coords.latitude;
+    userLong = position.coords.longitude;
+
+    document.getElementById("output").innerText =
+        "Latitude: " + userLat + ", Longitude: " + userLong;
 }
 
-function searchPart() {
-    let part = document.getElementById("search").value;
-    document.getElementById("output").innerText = 
-    "Searching for: " + part;
+async function searchPart() {
+    const part = document.getElementById("search").value;
+
+    if (!part) {
+        alert("Enter spare part name.");
+        return;
+    }
+    if (!userLat || !userLong) {
+        alert("Click 'Get Location' first.");
+        return;
+    }
+
+    // Your Render backend URL
+    const apiUrl = `https://spare-finder-bot.onrender.com/api/search?lat=${userLat}&long=${userLong}&item=${part}`;
+
+    document.getElementById("output").innerText = "Searching...";
+
+    try {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+
+        if (data.count === 0) {
+            document.getElementById("output").innerText = "No shops found.";
+            return;
+        }
+
+        // format results
+        let html = `<h3>Results (${data.count} shops)</h3>`;
+        data.shops.forEach((shop, i) => {
+            html += `
+                <p>
+                <b>${i + 1}. ${shop.name}</b><br>
+                Distance: ${shop.distanceKm} km<br>
+                <a href="${shop.googleMapLink}" target="_blank">📍 Open in Maps</a>
+                </p>
+            `;
+        });
+
+        document.getElementById("output").innerHTML = html;
+
+    } catch (e) {
+        document.getElementById("output").innerText = "Error contacting server.";
+        console.log(e);
+    }
 }
