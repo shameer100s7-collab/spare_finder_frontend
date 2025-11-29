@@ -53,14 +53,35 @@ async function searchPart() {
             document.getElementById("output").innerText = "No shops found.";
             return;
         }
+      function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) ** 2;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return (R * c).toFixed(2);
+}
 
         // format results
         let html = `<h3>Results (${data.shops.length} shops)</h3>`;
         data.shops.forEach((shop, i) => {
-            html += `
-                <p>
-                <b>${i + 1}. ${shop.name}</b><br>
-                Distance: ${shop.distanceKm} km<br>
+           html += `
+  <p>
+    <b>${i + 1}. ${shop.name}</b><br>
+    Distance: ${dist} km<br>
+    <a href="https://www.google.com/maps/search/?api=1&query=${shop.lat},${shop.long}" target="_blank">📍 Open in Maps</a>
+  </p>
+`;
+
+    <b>${i + 1}. ${shop.name}</b><br>
+    Distance: ${dist} km<br>
+    <a href="https://www.google.com/maps/search/?api=1&query=${shop.lat},${shop.long}" target="_blank">📍 Open in Maps</a>
+  </p>
+`;
+
                 <a href="${shop.googleMapLink}" target="_blank">📍 Open in Maps</a>
                 </p>
             `;
