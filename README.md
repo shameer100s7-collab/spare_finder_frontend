@@ -38,7 +38,7 @@ Shows working API returning shop results in JSON format.
 
 ### 🚀 Render Deployment Dashboard
 Backend hosted on Render and running live.
-![Render Dashboard](https://raw.githubusercontent.com/shameer100s7-collab/spare_finder_frontend/main/render_dashboard.png)
+![Render Dashboard](https://github.com/shameer100s7-collab/spare_finder_frontend/blob/main/Screenshot%20(135).png)
 
 ---
 
